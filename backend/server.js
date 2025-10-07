@@ -14,7 +14,24 @@ const like=require('./routes/likeRoutes')
 const debugRoutes=require('./routes/debugRoutes')
 const paymentRoutes=require('./routes/paymentRoutes')
 app.use(express.json())
-app.use(cors())
+
+// Configure CORS to only allow the configured frontend origin(s)
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://click-and-collect-eta.vercel.app'
+const corsOptions = {
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl)
+        if (!origin) return callback(null, true)
+        const allowed = [FRONTEND_URL]
+        if (allowed.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
     next();

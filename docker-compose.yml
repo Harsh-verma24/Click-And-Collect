@@ -10,7 +10,7 @@ services:
     depends_on:
       - backend
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=https://click-and-collect-backend.onrender.com/
     volumes:
       - ./frontend:/app
       - /app/node_modules

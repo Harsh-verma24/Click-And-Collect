@@ -1,7 +1,7 @@
 const express = require('express');
 const route = express.Router();
 const upload = require('../middleWare/sellerProductMiddleware');
-const { protect } = require('../middleWare/sellerLoginMiddleware');
+const { protect } = require('../middleWare/sellerLoginMIddleWare');
 const { productUpload, getProduct, editProduct, deleteProduct, getAllProducts ,getSingleProduct } = require('../controller/sellerProductUploadController');
 
 const handleFileUpload = (req, res, next) => {

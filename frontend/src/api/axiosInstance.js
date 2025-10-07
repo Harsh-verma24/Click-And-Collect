@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// Use Vite env var if provided, otherwise fallback to localhost:2005
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:2005'
+// Use Vite env var if provided, otherwise fallback to the deployed backend
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://click-and-collect-backend.onrender.com/'
 
 const api = axios.create({
   baseURL: BASE_URL,
