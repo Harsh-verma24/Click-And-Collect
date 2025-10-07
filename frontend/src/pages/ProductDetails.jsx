@@ -197,6 +197,11 @@ Discover our high-quality products, thoughtfully designed to meet your diverse n
             <button
               className="flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
               onClick={() => {
+                if (!token) {
+                  setMessage('Please login to continue to payment.')
+                  navigate('/user-login')
+                  return
+                }
                 const item = { name: product.productName, price: Number(product.productOfferPrice), quantity }
                 navigate('/payment', { state: { items: [item] } })
               }}

@@ -5,11 +5,19 @@ import { useLocation, useNavigate } from 'react-router-dom'
 export default function Payment(){
   const location = useLocation()
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
   const [items, setItems] = useState(location.state?.items || [])
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState(null)
 
   useEffect(() => {
+    // If not authenticated, redirect to login
+    if (!token) {
+      setMessage('You must be logged in to proceed to payment. Redirecting to login...')
+      setTimeout(() => navigate('/user-login'), 1000)
+      return
+    }
+
     // If no items were passed, try to fetch the cart from backend (requires auth)
     const fetchCart = async () => {
       if (items && items.length > 0) return
@@ -29,6 +37,12 @@ export default function Payment(){
   const handlePay = async () =>{
     if (!items || items.length === 0) {
       setMessage('No items to checkout')
+      return
+    }
+
+    if (!token) {
+      setMessage('You must be logged in to checkout.')
+      navigate('/user-login')
       return
     }
 
