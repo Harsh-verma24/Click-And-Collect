@@ -14,6 +14,34 @@ This is a full-stack **MERN (MongoDB, Express.js, React.js, Node.js) and Cloudin
 - **Tailwind CSS** for styling
 - **Cloudinary** for storing image
 
+## Admin routes
+
+The project includes a small set of admin routes on the backend to perform management tasks. These endpoints are exposed under the `/api/admin` prefix. They are intentionally minimal and should be extended with proper authentication and role checks before using in production.
+
+Available endpoints:
+
+- POST /api/admin/login
+	- Description: Authenticate an admin user. Returns a token (JWT) to authorize further admin requests.
+	- Expected body (JSON): { "email": "admin@example.com", "password": "yourpassword" }
+	- Response (example): { "token": "<jwt-token>", "admin": { "id": "...", "email": "admin@example.com" } }
+
+- GET /api/admin/status
+	- Description: Simple status endpoint to verify the admin API is reachable and the server is running. Intended for health checks.
+	- Authentication: Optional in this minimal implementation. Add middleware for auth/role checks in production.
+	- Response (example): { "status": "ok", "time": "2025-10-08T...Z" }
+
+Testing examples (curl):
+
+Login (replace URL and body as needed):
+
+	curl -X POST "http://localhost:2005/api/admin/login" -H "Content-Type: application/json" -d '{"email":"admin@example.com","password":"pass"}'
+
+Status:
+
+	curl "http://localhost:2005/api/admin/status"
+
+Note: These routes are added as scaffolding — they do not implement production-grade authentication or role management. Use them as a starting point and harden before exposing any sensitive operations.
+
 ---
 
 ## 🛠️ Tech Stack

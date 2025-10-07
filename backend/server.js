@@ -13,6 +13,7 @@ const order=require('./routes/orderRoutes')
 const like=require('./routes/likeRoutes')
 const debugRoutes=require('./routes/debugRoutes')
 const paymentRoutes=require('./routes/paymentRoutes')
+const adminRoutes = require('./routes/adminRoutes')
 app.use(express.json())
 
 // Configure CORS to only allow the configured frontend origin(s)
@@ -45,6 +46,7 @@ app.use('/api/like',like)
 app.use('/api/order',order)
 app.use('/api/debug', debugRoutes)
 app.use('/api/payment', paymentRoutes)
+app.use('/api/admin', adminRoutes)
 // start server with error handling
 const start = async () => {
     try {
