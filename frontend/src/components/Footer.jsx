@@ -25,10 +25,10 @@ function Footer() {
         <div>
           <h2 className="text-lg font-bold mb-3">Support</h2>
           <p className="text-gray-400">
-            Sathymangalam, BIT, Tamil Nadu.
+            USICT ,GGSIPU , NEW DELHI
           </p>
-          <p className="mt-2 text-gray-400">sukant98657@gmail.com</p>
-          <p className="mt-2 text-gray-400">+91 8248761765</p>
+          <p className="mt-2 text-gray-400">iamharshvrma@gmail.com</p>
+          <p className="mt-2 text-gray-400">+91 8595944925</p>
         </div>
 
         <div>
@@ -54,7 +54,7 @@ function Footer() {
       </div>
 
       <div className="mt-10 text-center border-t border-gray-700 pt-4 text-gray-400 text-xs">
-        © Copyright Sukant 2025. All rights reserved.
+        © Copyright Harsh verma 2025. All rights reserved.
       </div>
     </div>
   );
