@@ -1,0 +1,100 @@
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Footer from "./components/Footer";
+import UserLogin from "./pages/UserLogin";
+import UserSignup from "./pages/UserSignup";
+import AdminLogin from "./pages/AdminLogin";
+import AdminSignup from "./pages/AdminSignup";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import Like from "./pages/Like";
+import ProductPage from "./pages/ProductPage";
+import Demo from "./pages/Demo";
+import SellerResetPassword from "./pages/SellerResetPassword";
+import UserResetPassword from "./pages/UserResetPassword";
+import AdminAddProduct from "./pages/AdminAddProduct";
+import AdminView from "./pages/AdminView";
+import AdminOrder from "./pages/AdminOrder";
+import AdminShipping from "./pages/AdminShipping";
+import Payment from "./pages/Payment";
+import SellerNavBar from "./components/SellerNavBar";
+import EditProduct from "./pages/EditProduct";
+import ProductDetails from "./pages/ProductDetails";
+import Contact from "./pages/Contact";
+import NavBar from "./components/NavBar";
+import { useState } from "react"; 
+import About from "./pages/About";
+import UserProfile from "./pages/UserProfile";
+import Orders from './pages/Orders'
+function AppContent() {
+  const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const adminRoutes = [
+    "/admin-add-product",
+    "/admin-view",
+    "/admin-order",
+    "/admin-shipping",
+    "/admin",
+    "/seller-login",
+    "/seller-signup",
+    "/seller-reset-password",
+    "/edit/:id",
+  ];
+  const sellerRoutes = [
+    "/seller-login",
+    "/seller-signup",
+    "/seller-reset-password",
+    "/edit/:id",
+  ];
+
+  const isAdminPage = adminRoutes.includes(location.pathname);
+  const isSellerPage = sellerRoutes.includes(location.pathname);
+  const isEditProductPage = location.pathname.startsWith("/edit/");
+
+  return (
+    <>
+      {!isAdminPage && !isEditProductPage && <NavBar setSearchQuery={setSearchQuery} />}
+      {(isAdminPage || isEditProductPage) && !isSellerPage && <SellerNavBar />}
+
+      <Routes>
+        <Route path="user-login" element={<UserLogin />} />
+        <Route path="user-signup" element={<UserSignup />} />
+        <Route path="seller-login" element={<AdminLogin />} />
+        <Route path="seller-signup" element={<AdminSignup />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="/" element={<Home searchQuery={searchQuery} />} />
+        <Route path="like" element={<Like />} />
+        <Route path="product-page" element={<ProductPage />} />
+        <Route path="demo" element={<Demo />} />
+        <Route path="seller-reset-password" element={<SellerResetPassword />} />
+        <Route path="user-reset-password" element={<UserResetPassword />} />
+        <Route path="admin-add-product" element={<AdminAddProduct />} />
+        <Route path="admin-view" element={<AdminView />} />
+        <Route path="admin-order" element={<AdminOrder />} />
+        <Route path="admin-shipping" element={<AdminShipping />} />
+        <Route path="/admin" element={<AdminView />} />
+  <Route path="payment" element={<Payment/>} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="about" element={<About />} />
+        <Route path="userProfile" element={<UserProfile />} />
+        <Route path="orders" element={<Orders/>}/>
+      </Routes>
+
+      {!isAdminPage && !isEditProductPage && <Footer />}
+    </>
+  );
+}
+
+
+
+function App() {
+  return (
+    <BrowserRouter>
+        <AppContent />
+    </BrowserRouter>
+  );
+}
+
+export default App;
