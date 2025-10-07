@@ -30,15 +30,13 @@ Available endpoints:
 	- Authentication: Optional in this minimal implementation. Add middleware for auth/role checks in production.
 	- Response (example): { "status": "ok", "time": "2025-10-08T...Z" }
 
-Testing examples (curl):
+Testing:
 
-Login (replace URL and body as needed):
+Use the seller-login route `/seller-login` (POST) with a JSON body. Example request body:
 
-	curl -X POST "http://localhost:2005/api/admin/login" -H "Content-Type: application/json" -d '{"email":"admin@example.com","password":"pass"}'
+  { "email": "admin@example.com", "password": "yourpassword" }
 
-Status:
-
-	curl "http://localhost:2005/api/admin/status"
+Note: In this repository the existing seller login route is available at `/api/sellerLogin`. If you prefer the `/lseller-login` path, add a route mapping in the backend to forward requests or update the frontend to call the desired path.
 
 Note: These routes are added as scaffolding — they do not implement production-grade authentication or role management. Use them as a starting point and harden before exposing any sensitive operations.
 
