@@ -64,7 +64,6 @@ Note: These routes are added as scaffolding — they do not implement production
 
 ### User Page:
 ![Screenshot 2025-03-12 190227](https://github.com/user-attachments/assets/e90cec61-fb8a-4dd1-8839-8cbde442fce3)
-![Screenshot 2025-03-12 190238](https://github.com/user-attachments/assets/c0bcb990-dd18-4416-99f8-d4536ec84e1e)
 ![Screenshot 2025-03-12 190250](https://github.com/user-attachments/assets/4b3ecf16-8929-49c3-9b98-cf25aee4b8b5)
 ![Screenshot 2025-03-12 190314](https://github.com/user-attachments/assets/c252234d-79d5-40e5-a10f-248d105f5085)
 ![Screenshot 2025-03-12 194851](https://github.com/user-attachments/assets/ae6849df-1392-4890-8f70-084743a86751)
@@ -80,7 +79,7 @@ Note: These routes are added as scaffolding — they do not implement production
 ## ⚙️ Installation
 ### 1️⃣ Clone the repository
 sh
-git clone https://github.com/SUKANT43/E-commerce-Mern
+git clone https://github.com/Harsh-verma24/Click-And-Collect
 cd click-and-collect
 
 
